@@ -1,0 +1,7 @@
+.MuiPaper-root {
+    /*background-color: #181818 !important;*/
+    border-radius: 0.8rem !important;
+
+    min-width: 720px;
+    max-width: unset;
+}

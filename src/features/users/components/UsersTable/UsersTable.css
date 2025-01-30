@@ -1,0 +1,33 @@
+.MuiDataGrid-virtualScrollerRenderZone, .MuiToolbar-root {
+    color: #fff;
+    font-weight: bold;
+}
+.MuiDataGrid-root {
+    font-size: 1rem !important;
+}
+.MuiDataGrid-container--top [role=row] {
+    background-color: #575757 !important;
+    color: #fff;
+    font-weight: bold;
+}
+.MuiDataGrid-overlay {
+    background-color: transparent !important;
+}
+.MuiDataGrid-columnSeparator--resizable {
+    display: none !important;
+}
+
+.modal-action {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-top: 1.2rem;
+}
+
+.users-modal-content {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
