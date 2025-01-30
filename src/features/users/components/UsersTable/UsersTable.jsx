@@ -53,6 +53,11 @@ export const UsersTable = () => {
     },
   });
 
+  const handleEdit = (updatedUser) => {
+    editUser.mutate(updatedUser);
+    return updatedUser;
+  };
+
   const handleOpenRemoveUserModal = (id) => {
     handleOpenRemoveUser();
     setUserId(id);
@@ -78,15 +83,17 @@ export const UsersTable = () => {
         editable: true,
         disableColumnMenu: true,
         hideSortIcons: true,
+        sortable: false,
       },
       {
         field: "birthdate",
-        headerName: "Birth Date",
+        headerName: "Birthdate",
         type: "string",
         width: 285,
         editable: true,
         disableColumnMenu: true,
         hideSortIcons: true,
+        sortable: false,
       },
       {
         field: "salary",
@@ -95,7 +102,12 @@ export const UsersTable = () => {
         width: 285,
         editable: true,
         disableColumnMenu: true,
+        sortable: false,
         hideSortIcons: true,
+        valueFormatter: (params) => {
+          const number = parseFloat(params);
+          return number.toLocaleString("ru-RU") + "$";
+        },
       },
       {
         field: "actions",
@@ -104,6 +116,7 @@ export const UsersTable = () => {
         editable: false,
         hideSortIcons: true,
         disableColumnMenu: true,
+        sortable: false,
         getActions: (params) => [
           <GridActionsCellItem
             icon={<DeleteIcon color={"error"} />}
@@ -116,11 +129,6 @@ export const UsersTable = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleEdit = (updatedUser) => {
-    editUser.mutate(updatedUser);
-    return updatedUser;
-  };
-
   return (
     <>
       <div style={{ height: 500, maxWidth: 1140 }}>
@@ -129,9 +137,9 @@ export const UsersTable = () => {
           rows={usersList}
           loading={isUsersListLoading}
           columns={usersTableColumns}
+          hideFooter
           processRowUpdate={handleEdit}
           onProcessRowUpdateError={(e) => console.log(e)}
-          hideFooter
         />
         <div className="modal-action">
           <UsersModal onAddUser={addUser} />
